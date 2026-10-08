@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "detector-incendios",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -250, "left": -20, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -230,
+      "left": 380,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-led", "id": "ledR", "top": -230, "left": 470, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "ledG", "top": -230, "left": 530, "attrs": { "color": "green" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -150,
+      "left": 440,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -150,
+      "left": 500,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -140, "left": 600, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 20, "left": 400, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 230, "left": 380, "attrs": { "pins": "i2c" } }
+  ],
+  "connections": [
+    [ "uno:5V", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "uno:GND.1", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "bz1:2", "bb1:tn.4", "black", [ "v0" ] ],
+    [ "bz1:1", "uno:8", "orange", [ "v0" ] ],
+    [ "ledR:C", "bb1:tn.6", "black", [ "v0" ] ],
+    [ "uno:7", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "ledR:A", "red", [ "v0" ] ],
+    [ "ledG:C", "bb1:tn.8", "black", [ "v0" ] ],
+    [ "uno:6", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "ledG:A", "green", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.10", "red", [ "v0" ] ],
+    [ "dht1:GND", "bb1:tn.10", "black", [ "v0" ] ],
+    [ "dht1:SDA", "uno:2", "blue", [ "v0" ] ],
+    [ "gas1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "gas1:GND", "uno:GND.2", "black", [ "v0" ] ],
+    [ "gas1:AOUT", "uno:A0", "gold", [ "v0" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "v0" ] ],
+    [ "lcd1:SDA", "uno:A4", "purple", [ "v0" ] ],
+    [ "lcd1:SCL", "uno:A5", "cyan", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
